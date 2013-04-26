@@ -1,10 +1,8 @@
-unsupervised_two_speaker
-========================
-
 Unsupervised Two Speaker Separation
+===================================
 
 This program implements the algorithm in "An unsupervised approach to cochannel speech separation" by 
-K. Hu and D. L. Wang (submited to IEEE Trans. Audio, Speech, and Lang. Process.). This is an unsupervised
+K. Hu and D. L. Wang (IEEE Trans. Audio, Speech, and Lang. Process., 2013). This is an unsupervised
 algorithm for two-speaker separation.
 
 In a Linux system, go to "run" folder and execute seqGrp.m to start the program. It requires a 16-kHz time-domain cochannel speech as the input.
