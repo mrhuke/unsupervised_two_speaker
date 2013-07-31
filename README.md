@@ -10,10 +10,9 @@ System requirements:
 
 It is recommended to run the algorithms under a Linux system in MATLAB. The main program will call external executable files which are already compiled in Linux version 2.6.32-358.2.1.el6.x86_64 in a REHL 6.4 distribution. Otherwise you have to compile the tandem algorithm (source code in folder "tandem") and segmentation algorithm (source code in folder "segment") and generate your own executables.
 
-Run an example:
+It requires a 16-kHz time-domain cochannel speech as the input.
 
-In a Linux system, go to "run" folder and execute seqGrp.m to start the program. It requires a 16-kHz time-domain cochannel speech as the input.
-To run a sample program, do the following:
+Run an example:
 
 1. Under a Linux system, go to the "run" folder
 2. start MATLAB
