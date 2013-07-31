@@ -14,6 +14,7 @@ Run an example:
 
 In a Linux system, go to "run" folder and execute seqGrp.m to start the program. It requires a 16-kHz time-domain cochannel speech as the input.
 To run a sample program, do the following:
+
 1. Under a Linux system, go to the "run" folder
 2. start MATLAB
 3. mixture = load('mixture');
