@@ -6,11 +6,15 @@ K. Hu and D. L. Wang (IEEE Trans. Audio, Speech, and Lang. Process., 2013). This
 algorithm for two-speaker separation.
 
 
-System requirements:
+Requirements:
 
-It is recommended to run the algorithms under a Linux system in MATLAB. The main program will call external executable files which are already compiled in Linux version 2.6.32-358.2.1.el6.x86_64 in a REHL 6.4 distribution. Otherwise you have to compile the tandem algorithm (source code in folder "tandem") and segmentation algorithm (source code in folder "segment") and generate your own executables.
+- The input mixture (the wav file) needs to have a sampling frequency of 16 kHz
 
-It requires a 16-kHz time-domain cochannel speech as the input.
+- The algorithms can only run in MATLAB under Linux
+
+- The main MATLAB program will call external executables compiled in Linux version 2.6.32-358.2.1.el6.x86_64 in a REHL 6.4 distribution. In other systems, you have to compile the tandem algorithm (source code in folder "tandem") and segmentation algorithm (source code in folder "segment") and generate your own executables.
+
+- The tandem algorithm used here is not the most unpdated version. It does not generate and group T-segments. The newest version can be found at github.com/mrhuke/tandem
 
 Run an example:
 
@@ -22,9 +26,9 @@ Run an example:
 
 A description of the main steps performed:
 
-1. Run a tandem algorithm (Hu & Wang'11) to estimate simultaneous streams
-2. Rank simultaneous streams by time
-3. Extract GFCC features (Shao'07) for each simultaneous stream
-4. Perform beam search to group voiced simultaneous streams
-5. Onset/offset segmentation to generate unvoiced segments
+1. Run a tandem algorithm (Hu & Wang''11) to generate simultaneous streams (SS)
+2. Order SS by time
+3. Extract GFCCs for each SS
+4. Group voiced SS by beam search
+5. Generate unvoiced speech segments by onset/offset based segmentation
 6. Group unvoiced-voiced and unvoiced-unvoiced segments
