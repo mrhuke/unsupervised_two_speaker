@@ -26,7 +26,7 @@ Run an example:
 
 A description of the main steps performed:
 
-1. Run a tandem algorithm (Hu & Wang''11) to generate simultaneous streams (SS)
+1. Run a tandem algorithm (Hu & Wang'11) to generate simultaneous streams (SS)
 2. Order SS by time
 3. Extract GFCCs for each SS
 4. Group voiced SS by beam search
