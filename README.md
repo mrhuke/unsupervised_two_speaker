@@ -10,7 +10,7 @@ Requirements:
 
 - The input mixture (the wav file) needs to have a sampling frequency of 16 kHz
 
-- The algorithms can only run in MATLAB under Linux
+- The algorithms is developed in MATLAB under Linux
 
 - The main MATLAB program will call external executables compiled in Linux version 2.6.32-358.2.1.el6.x86_64 in a REHL 6.4 distribution. In other systems, you have to compile the tandem algorithm (source code in folder "tandem") and segmentation algorithm (source code in folder "segment") and generate your own executables.
 
