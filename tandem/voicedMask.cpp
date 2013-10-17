@@ -458,29 +458,33 @@ void voicedMask::initPitchEst(void)
 
 	for(frame=10; frame<numFrame; frame++)
 	{
+		//printf(" %d", frame);
 		for(int delay=min_pitch; delay<=max_pitch; delay++)
 			pitchProb(frame, delay);
 
 		p1[frame]=p2[frame]=0;
 
+		//printf("cross mask1,");
 		int count=0;
 		for(chan=0; chan<numberChannel; chan++)
 		{
-			if ( (corrLgm[frame].cross[chan]>0.985) || (corrLgm[frame].crossEv[chan]>0.985) )
+			if ( (corrLgm[frame].cross[chan]>.995) || (corrLgm[frame].crossEv[chan]>1) )
 			{
 				m1[frame].value[chan]=1;	
 				count++;
 			}
 			else m1[frame].value[chan]=0;
 		}
-				      
 		if (count>5)
 		{
+			//printf("pitch1,");
 			p1[frame]=maskToPitchML2(frame, m1[frame].value, min_pitch, max_pitch);
-
+			//printf("done");
+/*
 			if (p1[frame]>0)
 			{
 				count=0;
+				//printf("cross mask2 & prob mask1,");
 				for(chan=0; chan<numberChannel; chan++)
 				{
 					if ( (m1[frame].value[chan]>0) && (Prob[frame].sProb[chan][p1[frame]]<=theta_p))
@@ -501,6 +505,7 @@ void voicedMask::initPitchEst(void)
 				fprintf(out1,"\n");		
 				#endif
 
+				//printf("pitch2 & prob mask2,");
 				if(count>5)
 				{
 					p2[frame]=maskToPitchML2(frame, m2[frame].value, min_pitch, max_pitch);
@@ -519,8 +524,8 @@ void voicedMask::initPitchEst(void)
 				}
 				fprintf(out2,"\n");	
 				#endif	
-			}
-		}		
+			}*/
+		}	
 	}
 	#ifdef DEBUG
 	fclose(out1);
@@ -647,9 +652,13 @@ void voicedMask::maskToPitch(int nCon)
 
 void voicedMask::dtmPitchMask(void)
 {
+	printf("initial mask estimation...");
 	initPitchEst();
+	printf("Done\n");
 
+	printf("iterative mask estimation...\n");
 	iterativePitchEst();
+	printf("Done\n");
 
 	// refine pitch contours
 	int n=0;

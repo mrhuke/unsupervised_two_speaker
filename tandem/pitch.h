@@ -6,7 +6,7 @@
 #define PHU_NUM		5
 #define CANDIDATE_THRESHOLD	0.9
 #define THETAC		0.985
-#define MAX_CONTOUR	100
+#define MAX_CONTOUR	800
 
 struct pitchSUnitNet
 {

@@ -46,11 +46,14 @@ void feature::computeFeature(gammaToneFilterBank *AudiPery, int sLen, int echo)
 			corrLgm[n].zc[chan]=zeroCross(data.inputXR, max_delay);
 		}
 	}
+	if(echo) printf("\n");
 	
+	if (echo) printf("Compute cross channel correlations...");
 	for(n=0; n<numFrame; n++)
 		computeCross(n);
+	if (echo) printf("Done.\n");
 
-	#ifdef DEBUG	
+	//#ifdef DEBUG	
 	FILE *out=fopen("cross","w");
 	for(int m=0; m<numFrame; m++)
 	{
@@ -68,15 +71,13 @@ void feature::computeFeature(gammaToneFilterBank *AudiPery, int sLen, int echo)
                 fprintf(out, "\n");
         }
         fclose(out);
-	#endif
+	//#endif
 
 	for(chan=0; chan<numberChannel; chan++)
 	{
 		delete [] envelope[chan];
 		memIndiEv[chan]=0;
 	}
-
-	if (echo) printf("\n");
 }
 
 void feature::newFeature(void)

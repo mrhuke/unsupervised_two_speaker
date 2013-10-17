@@ -70,8 +70,8 @@ void pitchMask::singleUnitProb(int frame, int chan, int delay)
 {
 	double f[6];
 
-	f[0] = corrLgm[frame].acf[chan][delay]/corrLgm[frame].acf[chan][0];
-	f[1] = corrLgm[frame].acfEv[chan][delay]/corrLgm[frame].acfEv[chan][0];
+	f[0] = corrLgm[frame].acf[chan][delay]/(corrLgm[frame].acf[chan][0]+1e-10);
+	f[1] = corrLgm[frame].acfEv[chan][delay]/(corrLgm[frame].acfEv[chan][0]+1e-10);
 
 	f[2] = double(delay+1)/(corrLgm[frame].zc[chan]+1e-10)/2;
 	f[3] = double(delay+1)/(corrLgm[frame].zcEv[chan]+1e-10)/2;
